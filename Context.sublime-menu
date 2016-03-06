@@ -12,7 +12,8 @@
         { "caption": "Select Article Metadata", "command": "pelican_select_metadata" },
         { "caption": "-" },
         { "caption": "Update Slug using Title", "command": "pelican_generate_slug" },
-        { "caption": "Update Article Date", "command": "pelican_update_date" }
+        { "caption": "Update Article Date", "command": "pelican_update_date" },
+        { "caption": "Update Article Modified Date", "command": "pelican_update_modified_date" }
     ]},
     { "caption": "-", "id": "end" }
 ]

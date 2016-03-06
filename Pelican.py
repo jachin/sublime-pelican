@@ -119,6 +119,30 @@ class PelicanUpdateDateCommand(sublime_plugin.TextCommand):
         self.view.show(new_datestr_region)
 
 
+class PelicanUpdateModifiedDateCommand(sublime_plugin.TextCommand):
+
+    def run(self, edit):
+        modified_region = self.view.find(
+            ':?modified:\s*',
+            0,
+            sublime.IGNORECASE
+        )
+        if not modified_region:
+            return
+
+        old_datestr_region = sublime.Region(
+            modified_region.end(), self.view.line(modified_region).end())
+        self.view.replace(
+            edit, old_datestr_region, strDateNow())
+
+        new_datestr_region = sublime.Region(
+            modified_region.end(), self.view.line(modified_region).end())
+        self.view.sel().clear()
+        self.view.sel().add(new_datestr_region)
+
+        self.view.show(new_datestr_region)
+
+
 class PelicanGenerateSlugCommand(sublime_plugin.TextCommand):
 
     def slugify(self, value):
